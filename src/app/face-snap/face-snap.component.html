@@ -6,5 +6,7 @@
 <p>{{faceSnap.description}}</p>
 <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
 <button (click)="onAddSnap()">{{buttonTxt}}</button>
-<p>{{ faceSnap.snaps }}</p>
+<p>
+    <span [ngStyle]="{color:'rgb(0, '+faceSnap.snaps+' ,0)'}" >{{ faceSnap.snaps }}</span>
+</p>
 </div>
