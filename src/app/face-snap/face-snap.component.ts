@@ -1,6 +1,7 @@
 import { DYNAMIC_TYPE } from '@angular/compiler';
 import { Component, OnInit, Input} from '@angular/core';
 import { FaceSnap } from '../models/face-snap.model';
+import { FaceSnapsService } from '../services/face-snaps.service';
 
 @Component({
   selector: 'app-face-snap',
@@ -11,15 +12,17 @@ export class FaceSnapComponent implements OnInit {
   @Input() faceSnap!:FaceSnap;
   buttonTxt!:string;
 
+  constructor(private faceSnapService:FaceSnapsService){}
+
 ngOnInit(){ 
  this.buttonTxt="Oh Snap!";
 }
 onAddSnap(){
   if(this.buttonTxt=="Oh Snap!"){
-  this.faceSnap.snaps++;
+  this.faceSnapService.snapFaceSnapById(this.faceSnap.id );
   this.buttonTxt="Oops, unSnap!";
 }else{
-  this.faceSnap.snaps--;
+  this.faceSnapService.snapFaceSnapById(this.faceSnap.id);
   this.buttonTxt='Oh Snap!';
 }
 }
