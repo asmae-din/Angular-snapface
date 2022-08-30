@@ -19,10 +19,10 @@ ngOnInit(){
 }
 onAddSnap(){
   if(this.buttonTxt=="Oh Snap!"){
-  this.faceSnapService.snapFaceSnapById(this.faceSnap.id );
+  this.faceSnapService.snapFaceSnapById(this.faceSnap.id,'snap');
   this.buttonTxt="Oops, unSnap!";
 }else{
-  this.faceSnapService.snapFaceSnapById(this.faceSnap.id);
+  this.faceSnapService.snapFaceSnapById(this.faceSnap.id,'unsnap');
   this.buttonTxt='Oh Snap!';
 }
 }
