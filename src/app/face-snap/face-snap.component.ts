@@ -1,5 +1,6 @@
 import { DYNAMIC_TYPE } from '@angular/compiler';
 import { Component, OnInit, Input} from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { FaceSnap } from '../models/face-snap.model';
 import { FaceSnapsService } from '../services/face-snaps.service';
 
@@ -12,7 +13,8 @@ export class FaceSnapComponent implements OnInit {
   @Input() faceSnap!:FaceSnap;
   buttonTxt!:string;
 
-  constructor(private faceSnapService:FaceSnapsService){}
+  constructor(private faceSnapService:FaceSnapsService,
+              private router:Router ){}
 
 ngOnInit(){ 
  this.buttonTxt="Oh Snap!";
@@ -26,5 +28,8 @@ onAddSnap(){
   this.buttonTxt='Oh Snap!';
 }
 }
+onViewFaceSnap(){
+this.router.navigateByUrl(`facesnaps/${this.faceSnap.id}`);
 
+}
 }
