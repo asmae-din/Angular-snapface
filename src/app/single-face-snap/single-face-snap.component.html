@@ -1,4 +1,4 @@
-<div class="face-snap-card" [ngClass]="{snapped: buttonTxt==='Oops, unSnap!'}">
+<div class="face-snap-card" *ngIf="faceSnap$ |async as faceSnap" [ngClass]="{snapped: buttonTxt==='Oops, tasteless!'}">
     <h2>{{faceSnap.title | titlecase}}</h2>
     <a routerLink="/facesnaps">Back</a>
     <p *ngIf="faceSnap.location">{{faceSnap.location}} {{faceSnap.createdDate | date :'dd/MM/YY à HH:mm'}}</p>
@@ -9,7 +9,7 @@
     <p>{{faceSnap.directions}}</p>
     <h4>Nutrition Facts</h4>
     <p>{{faceSnap.nutritionFacts}}</p>
-    <button (click)="onAddSnap()">{{buttonTxt}}</button>
+    <button (click)="onAddSnap(faceSnap.id)">{{buttonTxt}}</button>
     
     <p>
         <span [ngStyle]="{color:'rgb(0, '+faceSnap.snaps+' ,0)'}" >{{ faceSnap.snaps }}</span>
